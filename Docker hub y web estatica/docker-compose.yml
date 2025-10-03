@@ -1,0 +1,12 @@
+name: nginx-2048-stack
+services:
+  web:
+    image: smateo09/nginx-2048:latest   # Reemplaza con tu usuario real de Docker Hub
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:80/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
